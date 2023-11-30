@@ -34,4 +34,24 @@ public class GameManager {
             this.ball = ball;
         }
     }
+
+    public Result Judge(List<Integer> player) {
+        long strikeCount = countStrikes(player);
+
+        long ballCount = countBalls(player);
+
+        return new Result(strikeCount, ballCount);
+    }
+
+    private long countStrikes(List<Integer> player) {
+        return IntStream.range(0, player.size())
+                .filter(i -> Objects.equals(player.get(i), answer.get(i)))
+                .count();
+    }
+
+    private long countBalls(List<Integer> player) {
+        return IntStream.range(0, player.size())
+                .filter(i -> !Objects.equals(player.get(i), answer.get(i)) && answer.contains(player.get(i)))
+                .count();
+    }
 }
