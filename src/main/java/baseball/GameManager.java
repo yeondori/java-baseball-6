@@ -24,4 +24,14 @@ public class GameManager {
         }
         return numbers;
     }
+
+    public static class Result {
+        public long strike;
+        public long ball;
+
+        public Result(long strike, long ball) {
+            this.strike = strike;
+            this.ball = ball;
+        }
+    }
 }
