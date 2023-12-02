@@ -1,32 +1,56 @@
 package baseball;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class InputView {
-    public void requestNumbers() {
+    public List<Integer> requestNumbers() {
         System.out.println("숫자를 입력해주세요 : ");
-        String input = readNumbers();
-        validateNumbers(input);
+
+        while(true) {
+            try  {
+                return readNumbers();
+            } catch(IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
-    private String readNumbers() {
+    private List<Integer> readNumbers() {
+        String input = readLine();
+        validateNumbers(input);
+        return parseNumbers(input);
+    }
 
+    private List<Integer> parseNumbers(String input) {
+        validateNumbers(input);
+        return Arrays.stream(input.split(""))
+                .map(Integer::parseInt)
+                .toList();
     }
 
     private void validateNumbers(String input) {
-        String[] inputs = input.split("");
-
-        validateNumber();
-        validateNumberRange();
-        validateDuplicate();
+        validateNumber(input);
+        validateDuplicate(input);
     }
 
-    private void validateNumber() {
+    private void validateNumber(String input) {
+        if (!input.matches("^[1-9]+$")) {
+            throw new IllegalArgumentException("[ERROR] 1~9 사이의 숫자 3개만 입력 가능합니다.");
+        }
     }
 
-    private void validateNumberRange() {
-    }
+    private void validateDuplicate(String input) {
+        int size = Arrays.stream(input.split(""))
+                .distinct()
+                .toList()
+                .size();
 
-    private void validateDuplicate() {
+        if (size!=3) {
+            throw new IllegalArgumentException("[ERROR] 중복이 없는 3개의 수만 입력 가능합니다.");
+        }
     }
 }
