@@ -23,6 +23,7 @@ class JudgementTest {
         Result result = judgement.Judge(ALL_STRIKES);
         //then
         assertThat(result.strike).isEqualTo(3);
+        assertThat(result.ball).isEqualTo(0);
     }
 
     @Test
@@ -33,6 +34,19 @@ class JudgementTest {
         //when
         Result result = judgement.Judge(ALL_BALLS);
         //then
+        assertThat(result.strike).isEqualTo(0);
         assertThat(result.ball).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("정답과 일치하는 숫자가 없으면 낫싱이다.")
+    public void judgeIfNothing() throws Exception {
+        //given
+        Judgement judgement = new Judgement(ANSWER);
+        //when
+        Result result = judgement.Judge(NOTHING);
+        //then
+        assertThat(result.strike).isEqualTo(0);
+        assertThat(result.ball).isEqualTo(0);
     }
 }
