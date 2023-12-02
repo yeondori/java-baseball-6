@@ -8,7 +8,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class InputView {
     public List<Integer> requestNumbers() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
 
         while(true) {
             try  {
@@ -17,6 +17,27 @@ public class InputView {
                 System.out.println(e.getMessage());
             }
         }
+    }
+
+    public int requestRestartNumber() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        while(true) {
+            try  {
+                return readRestartNumber();
+            } catch(IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    private int readRestartNumber() {
+        String input = readLine();
+
+        if (!input.matches("^[1-2]$")) {
+            throw new IllegalArgumentException("[ERROR] 1 또는 2만 입력 가능합니다.");
+        }
+        return Integer.parseInt(input);
     }
 
     private List<Integer> readNumbers() {
