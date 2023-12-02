@@ -4,14 +4,17 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.IntStream;
 
-public class GameManager {
+public class GameBuilder {
     private final List<Integer> answer;
 
-    public GameManager(List<Integer> answer) {
-        this.answer = createNumbers();
+    private GameBuilder(List<Integer> answer) {
+        this.answer = answer;
+    }
+
+    public GameBuilder build() {
+        List<Integer> answer = createNumbers();
+        return new GameBuilder(answer);
     }
 
     private List<Integer> createNumbers() {
@@ -23,5 +26,9 @@ public class GameManager {
             }
         }
         return numbers;
+    }
+
+    public List<Integer> getAnswer() {
+        return answer;
     }
 }
