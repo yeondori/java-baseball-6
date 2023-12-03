@@ -35,11 +35,14 @@ public class InputView {
 
     private int readRestartNumber() {
         String input = readLine();
+        validateRestartNumber(input);
+        return Integer.parseInt(input);
+    }
 
+    private static void validateRestartNumber(String input) {
         if (!input.matches("^[1-2]$")) {
             throw new IllegalArgumentException("[ERROR] 1 또는 2만 입력 가능합니다.");
         }
-        return Integer.parseInt(input);
     }
 
     private List<Integer> readNumbers() {
@@ -49,7 +52,6 @@ public class InputView {
     }
 
     private List<Integer> parseNumbers(String input) {
-        validateNumbers(input);
         return Arrays.stream(input.split(""))
                 .map(Integer::parseInt)
                 .toList();
@@ -67,12 +69,7 @@ public class InputView {
     }
 
     private void validateDuplicate(String input) {
-        int size = Arrays.stream(input.split(""))
-                .distinct()
-                .toList()
-                .size();
-
-        if (size != 3) {
+        if (Arrays.stream(input.split("")).distinct().count() != 3) {
             throw new IllegalArgumentException("[ERROR] 중복이 없는 3개의 수만 입력 가능합니다.\n다시 입력해주세요 :");
         }
     }

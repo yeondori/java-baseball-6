@@ -1,7 +1,5 @@
 package baseball;
 
-import static baseball.Result.*;
-
 public class OutputView {
     public OutputView() {
     }

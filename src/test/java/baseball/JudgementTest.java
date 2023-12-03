@@ -16,37 +16,37 @@ class JudgementTest {
 
     @Test
     @DisplayName("정답과 일치하면 3스트라이크이다.")
-    public void judgeIfAllStrikes() throws Exception {
+    void judgeIfAllStrikes() throws Exception {
         //given
         Judgement judgement = new Judgement(ANSWER);
         //when
         Result result = judgement.judge(ALL_STRIKES);
         //then
         assertThat(result.getStrike()).isEqualTo(3);
-        assertThat(result.getBall()).isEqualTo(0);
+        assertThat(result.getBall()).isZero();
     }
 
     @Test
     @DisplayName("정답과 구성은 일치하나 모든 위치가 다르면 3볼이다.")
-    public void judgeIfAllBalls() throws Exception {
+    void judgeIfAllBalls() throws Exception {
         //given
         Judgement judgement = new Judgement(ANSWER);
         //when
         Result result = judgement.judge(ALL_BALLS);
         //then
-        assertThat(result.getStrike()).isEqualTo(0);
+        assertThat(result.getStrike()).isZero();
         assertThat(result.getBall()).isEqualTo(3);
     }
 
     @Test
     @DisplayName("정답과 일치하는 숫자가 없으면 낫싱이다.")
-    public void judgeIfNothing() throws Exception {
+    void judgeIfNothing() throws Exception {
         //given
         Judgement judgement = new Judgement(ANSWER);
         //when
         Result result = judgement.judge(NOTHING);
         //then
-        assertThat(result.getStrike()).isEqualTo(0);
-        assertThat(result.getBall()).isEqualTo(0);
+        assertThat(result.getStrike()).isZero();
+        assertThat(result.getBall()).isZero();
     }
 }
