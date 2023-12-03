@@ -9,11 +9,13 @@ public class Result {
         this.ball = ball;
     }
 
-    public long getStrike() {
-        return strike;
-    }
-
-    public long getBall() {
-        return ball;
+    public String status() {
+        if (strike == 3) {
+            return "FINISH";
+        }
+        if (strike + ball == 0) {
+            return "NOTHING";
+        }
+        return "CONTINUE";
     }
 }
