@@ -1,10 +1,10 @@
 package baseball;
 
 public class Result {
-    enum Status {
+    public enum Status {
         FINISH("3스트라이크"), NOTHING("낫싱"), CONTINUE("");
 
-        private String descript;
+        private final String descript;
 
         Status(String descript) {
             this.descript = descript;
@@ -15,9 +15,9 @@ public class Result {
         }
     }
 
-    private Status status;
-    private int strike;
-    private int ball;
+    private final Status status;
+    private final int strike;
+    private final int ball;
 
     public Result(int strike, int ball) {
         this.strike = strike;
@@ -49,12 +49,12 @@ public class Result {
 
     public String getStatusDescript() {
         if (this.status == Status.CONTINUE) {
-            return getContinueDiscript();
+            return getContinueDescript();
         }
         return status.getDescript();
     }
 
-    private String getContinueDiscript() {
+    private String getContinueDescript() {
         if (ball > 0 && strike > 0) {
             return (ball + "볼 " + strike + "스트라이크");
         }
