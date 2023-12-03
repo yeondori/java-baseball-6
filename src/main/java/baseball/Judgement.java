@@ -11,7 +11,7 @@ public class Judgement {
         this.answer = answer;
     }
 
-    public Result Judge(List<Integer> player) {
+    public Result judge(List<Integer> player) {
         int strikeCount = countStrikes(player);
         int ballCount = countBalls(player);
 

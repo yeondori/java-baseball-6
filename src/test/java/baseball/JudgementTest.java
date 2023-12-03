@@ -20,7 +20,7 @@ class JudgementTest {
         //given
         Judgement judgement = new Judgement(ANSWER);
         //when
-        Result result = judgement.Judge(ALL_STRIKES);
+        Result result = judgement.judge(ALL_STRIKES);
         //then
         assertThat(result.strike).isEqualTo(3);
         assertThat(result.ball).isEqualTo(0);
@@ -32,7 +32,7 @@ class JudgementTest {
         //given
         Judgement judgement = new Judgement(ANSWER);
         //when
-        Result result = judgement.Judge(ALL_BALLS);
+        Result result = judgement.judge(ALL_BALLS);
         //then
         assertThat(result.strike).isEqualTo(0);
         assertThat(result.ball).isEqualTo(3);
@@ -44,7 +44,7 @@ class JudgementTest {
         //given
         Judgement judgement = new Judgement(ANSWER);
         //when
-        Result result = judgement.Judge(NOTHING);
+        Result result = judgement.judge(NOTHING);
         //then
         assertThat(result.strike).isEqualTo(0);
         assertThat(result.ball).isEqualTo(0);
