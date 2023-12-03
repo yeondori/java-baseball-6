@@ -22,8 +22,8 @@ class JudgementTest {
         //when
         Result result = judgement.judge(ALL_STRIKES);
         //then
-        assertThat(result.strike).isEqualTo(3);
-        assertThat(result.ball).isEqualTo(0);
+        assertThat(result.getStrike()).isEqualTo(3);
+        assertThat(result.getBall()).isEqualTo(0);
     }
 
     @Test
@@ -34,8 +34,8 @@ class JudgementTest {
         //when
         Result result = judgement.judge(ALL_BALLS);
         //then
-        assertThat(result.strike).isEqualTo(0);
-        assertThat(result.ball).isEqualTo(3);
+        assertThat(result.getStrike()).isEqualTo(0);
+        assertThat(result.getBall()).isEqualTo(3);
     }
 
     @Test
@@ -46,7 +46,7 @@ class JudgementTest {
         //when
         Result result = judgement.judge(NOTHING);
         //then
-        assertThat(result.strike).isEqualTo(0);
-        assertThat(result.ball).isEqualTo(0);
+        assertThat(result.getStrike()).isEqualTo(0);
+        assertThat(result.getBall()).isEqualTo(0);
     }
 }
