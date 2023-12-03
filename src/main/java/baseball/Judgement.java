@@ -11,23 +11,24 @@ public class Judgement {
         this.answer = answer;
     }
 
-    public Result judge(List<Integer> player) {
-        int strikeCount = countStrikes(player);
-        int ballCount = countBalls(player);
+    public Result judge(List<Integer> playerGuess) {
+        int strikeCount = countStrikes(playerGuess);
+        int ballCount = countBalls(playerGuess);
 
         return new Result(strikeCount, ballCount);
     }
 
-    private int countStrikes(List<Integer> player) {
-        return IntStream.range(0, player.size())
-                .filter(i -> Objects.equals(player.get(i), answer.get(i)))
+    private int countStrikes(List<Integer> playerGuess) {
+        return IntStream.range(0, playerGuess.size())
+                .filter(i -> Objects.equals(playerGuess.get(i), answer.get(i)))
                 .toArray()
                 .length;
     }
 
-    private int countBalls(List<Integer> player) {
-        return IntStream.range(0, player.size())
-                .filter(i -> !Objects.equals(player.get(i), answer.get(i)) && answer.contains(player.get(i)))
+    private int countBalls(List<Integer> playerGuess) {
+        return IntStream.range(0, playerGuess.size())
+                .filter(i -> !Objects.equals(playerGuess.get(i), answer.get(i))
+                        && answer.contains(playerGuess.get(i)))
                 .toArray()
                 .length;
     }
