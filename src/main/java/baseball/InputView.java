@@ -2,7 +2,6 @@ package baseball;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -13,10 +12,10 @@ public class InputView {
     public List<Integer> requestNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
 
-        while(true) {
-            try  {
+        while (true) {
+            try {
                 return readNumbers();
-            } catch(IllegalArgumentException e) {
+            } catch (IllegalArgumentException e) {
                 System.out.print(e.getMessage());
             }
         }
@@ -25,10 +24,10 @@ public class InputView {
     public int requestRestartNumber() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        while(true) {
-            try  {
+        while (true) {
+            try {
                 return readRestartNumber();
-            } catch(IllegalArgumentException e) {
+            } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -73,7 +72,7 @@ public class InputView {
                 .toList()
                 .size();
 
-        if (size!=3) {
+        if (size != 3) {
             throw new IllegalArgumentException("[ERROR] 중복이 없는 3개의 수만 입력 가능합니다.\n다시 입력해주세요 :");
         }
     }
