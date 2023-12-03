@@ -1,4 +1,6 @@
-package baseball;
+package baseball.ui;
+
+import baseball.Result;
 
 public class OutputView {
     public OutputView() {
