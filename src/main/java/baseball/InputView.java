@@ -7,6 +7,9 @@ import java.util.Objects;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class InputView {
+    public InputView() {
+    }
+
     public List<Integer> requestNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
 
@@ -14,7 +17,7 @@ public class InputView {
             try  {
                 return readNumbers();
             } catch(IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+                System.out.print(e.getMessage());
             }
         }
     }
@@ -60,7 +63,7 @@ public class InputView {
 
     private void validateNumber(String input) {
         if (!input.matches("^[1-9]+$")) {
-            throw new IllegalArgumentException("[ERROR] 1~9 사이의 숫자 3개만 입력 가능합니다.");
+            throw new IllegalArgumentException("[ERROR] 1~9 사이의 숫자 3개만 입력 가능합니다.\n다시 입력해주세요 :");
         }
     }
 
@@ -71,7 +74,7 @@ public class InputView {
                 .size();
 
         if (size!=3) {
-            throw new IllegalArgumentException("[ERROR] 중복이 없는 3개의 수만 입력 가능합니다.");
+            throw new IllegalArgumentException("[ERROR] 중복이 없는 3개의 수만 입력 가능합니다.\n다시 입력해주세요 :");
         }
     }
 }
